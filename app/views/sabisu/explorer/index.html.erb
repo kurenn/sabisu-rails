@@ -8,6 +8,19 @@
    <div class="col-10">
     <h1>Api explorer</h1>
 
+    <div class="row">
+       <div class="col-2">
+         <span class="text-muted"><%= "/#{params[:resource]}/" %></span>
+       </div>
+       <div class="col-10">
+         <%= form_tag explorer_path, method: :get do %>
+           <%= hidden_field_tag 'resource', params[:resource] %>
+           <%= text_field_tag 'uri_pattern', params[:uri_pattern] %>
+           <%= submit_tag "Send", class: 'button pill danger'%>
+         <% end %>
+       </div>
+    </div>
+
     <div class="row" id="result">
       
     </div>

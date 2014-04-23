@@ -32,11 +32,8 @@ module Sabisu
   @@layout = "sabisu"
 
   # Resources
-  mattr_reader :resources
-
-  def self.set_resources(resources)
-    @@resources = resources 
-  end
+  mattr_accessor :resources
+  @@resources = []
 
   @@configured = false
 

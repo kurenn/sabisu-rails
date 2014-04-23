@@ -3,7 +3,7 @@ module Sabisu
 
     def index
       @resources = Sabisu.resources
-      @response = Sabisu::RequestBuilder.new(params[:resource]).response
+      @response = Sabisu::RequestBuilder.new(params[:resource], params[:uri_pattern]).response
     end
 
   end

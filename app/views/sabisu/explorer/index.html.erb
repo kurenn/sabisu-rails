@@ -13,12 +13,28 @@
          <span class="text-muted"><%= "/#{@explorer.resource}/" %></span>
        </div>
        <div class="col-10">
+
          <%= form_for :explorer, url: explorer_path, method: :get do |f| %>
            <%= f.hidden_field :resource, value: @explorer.resource %>
            <%= f.text_field :uri_pattern, value: @explorer.uri_pattern %>
            <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method) %>
            <%= f.submit "Send", class: 'button pill danger'%>
          <% end %>
+
+         <table>
+           <tr>
+             <th>Name</th>
+             <th>Type</th>
+             <th>Default</th>
+           </tr>
+           <% @explorer.resource_columns.each do |column| %>
+             <tr>
+             <td><%= column.name %></td>    
+             <td><%= column.type %></td>    
+             <td><%= column.default || "NULL" %></td>    
+           </tr>
+         <% end %>
+         </table>
        </div>
     </div>
 

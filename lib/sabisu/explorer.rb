@@ -1,5 +1,8 @@
 module Sabisu
   class Explorer
+
+    include Sabisu::Helpers::Required
+
     attr_reader :resource, :uri_pattern, :http_method
 
     def initialize(attrs = {})

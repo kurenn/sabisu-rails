@@ -26,12 +26,14 @@
              <th>Name</th>
              <th>Type</th>
              <th>Default</th>
+             <th>Required</th>
            </tr>
            <% @explorer.resource_columns.each do |column| %>
              <tr>
              <td><%= column.name %></td>    
              <td><%= column.type %></td>    
              <td><%= column.default || "NULL" %></td>    
+             <td><%= @explorer.required_attribute? column.name %></td>    
            </tr>
          <% end %>
          </table>

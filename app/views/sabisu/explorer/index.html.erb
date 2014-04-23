@@ -4,5 +4,17 @@
    </div>
    <div class="col-10">
     <h1>Api explorer</h1>
+
+    <div class="row" id="result">
+      
+    </div>
    </div>
 </div>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $.JSONView(<%= @response.html_safe %>, $('#result'))
+    });
+  </script>
+<% end %>

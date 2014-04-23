@@ -2,7 +2,8 @@ module Sabisu
   class ExplorerController < Sabisu::BaseController
 
     def index
-      @response = { products: {title: 'A title'} }.to_json
+      @resources = Sabisu.resources
+      @response = Sabisu::RequestBuilder.new(params[:resource]).response
     end
 
   end

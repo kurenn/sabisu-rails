@@ -1,8 +1,12 @@
 require 'rails/railtie'
 
 module Sabisu
-  class Railtie < Rails::Railtie
+  class Railtie < ::Rails::Railtie
     config.eager_load_namespaces << Sabisu
+
+    ActiveSupport.on_load :active_record do
+      Sabisu.set_resources(Sabisu::RouteRecognizer.new.resources)
+    end
 
     config.after_initialize do
       unless Sabisu.configured?

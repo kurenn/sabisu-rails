@@ -1,6 +1,9 @@
 <div class="row">
    <div class="col-2">
     <h1>Resources</h1>
+    <% @resources.each do |resource| %>
+      <%= link_to resource.capitalize, explorer_path(resource: resource) %>
+    <% end %>
    </div>
    <div class="col-10">
     <h1>Api explorer</h1>
@@ -14,7 +17,7 @@
 <%= content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-        $.JSONView(<%= @response.html_safe %>, $('#result'))
+        $.JSONView(<%= @response.body.html_safe %>, $('#result'))
     });
   </script>
 <% end %>

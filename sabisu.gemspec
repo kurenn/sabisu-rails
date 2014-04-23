@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activemodel", '~> 4.0'
   spec.add_dependency "actionpack", '~> 4.0'
+  spec.add_dependency "httparty"
 end

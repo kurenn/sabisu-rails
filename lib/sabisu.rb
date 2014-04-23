@@ -19,6 +19,10 @@ module Sabisu
   mattr_accessor :http_methods
   @@http_methods = @@http_methods.to_a + @@default_http_methods
 
+  # Headers to include on each request
+  mattr_accessor :headers
+  @@headers = nil
+
   @@configured = false
 
   def self.configured? #:nodoc:

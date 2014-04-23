@@ -10,5 +10,8 @@ Sabisu.setup do |config|
   
   # HTTP methods
   # config.http_methods = %w{ GET POST PUT DELETE PATCH }
+  
+  # Headers to include on each request
+  # config.headers = nil
 
 end

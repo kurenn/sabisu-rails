@@ -41,4 +41,5 @@ module Sabisu
 end
 
 require 'sabisu/railtie' 
+require 'sabisu/engine'
 require "sabisu/version"

@@ -1,6 +1,9 @@
-require "sabisu/version"
+require 'httparty'
 
 module Sabisu
+  extend ActiveSupport::Autoload
+
+  autoload :RequestBuilder
 
   # We ignore some attribues that might cause a collision between models
   @@default_ignored_attributes = %w{ created_at updated_at id }
@@ -20,8 +23,8 @@ module Sabisu
   @@http_methods = @@http_methods.to_a + @@default_http_methods
 
   # Headers to include on each request
-  mattr_accessor :headers
-  @@headers = nil
+  mattr_accessor :api_headers
+  @@api_headers = {}
 
   @@configured = false
 
@@ -38,3 +41,4 @@ module Sabisu
 end
 
 require 'sabisu/railtie' 
+require "sabisu/version"

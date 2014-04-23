@@ -4,6 +4,7 @@ module Sabisu
   extend ActiveSupport::Autoload
 
   autoload :RequestBuilder
+  autoload :RouteRecognizer
 
   # We ignore some attribues that might cause a collision between models
   @@default_ignored_attributes = %w{ created_at updated_at id }
@@ -29,6 +30,13 @@ module Sabisu
   # Layout
   mattr_accessor :layout
   @@layout = "sabisu"
+
+  # Resources
+  mattr_reader :resources
+
+  def self.set_resources(resources)
+    @@resources = resources 
+  end
 
   @@configured = false
 

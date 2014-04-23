@@ -5,15 +5,13 @@ module Sabisu
     base_uri Sabisu.base_api_uri
     headers Sabisu.api_headers
 
-    def initialize(resource, uri_pattern, http_method = 'get', body_params = {})
-      @resource = resource 
-      @http_method = http_method.to_s.downcase
+    def initialize(explorer, body_params = {})
+      @explorer = explorer
       @body_params = body_params
-      @uri_pattern = uri_pattern
     end
 
     def response 
-      self.class.send(@http_method, "/#{@resource}/#{@uri_pattern}", body: @body_params)
+      self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", body: @body_params)
     end
   end
 end

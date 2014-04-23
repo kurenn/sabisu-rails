@@ -2,7 +2,7 @@
    <div class="col-2">
     <h1>Resources</h1>
     <% @resources.each do |resource| %>
-      <%= link_to resource.capitalize, explorer_path(resource: resource) %>
+      <%= link_to resource.capitalize, explorer_path(explorer: { resource: resource }) %>
     <% end %>
    </div>
    <div class="col-10">
@@ -10,14 +10,14 @@
 
     <div class="row">
        <div class="col-2">
-         <span class="text-muted"><%= "/#{params[:resource]}/" %></span>
+         <span class="text-muted"><%= "/#{@explorer.resource}/" %></span>
        </div>
        <div class="col-10">
-         <%= form_tag explorer_path, method: :get do %>
-           <%= hidden_field_tag 'resource', params[:resource] %>
-           <%= text_field_tag 'uri_pattern', params[:uri_pattern] %>
-           <%= select_tag 'http_method', options_for_select(Sabisu.http_methods, params[:http_method]) %>
-           <%= submit_tag "Send", class: 'button pill danger'%>
+         <%= form_for :explorer, url: explorer_path, method: :get do |f| %>
+           <%= f.hidden_field :resource, value: @explorer.resource %>
+           <%= f.text_field :uri_pattern, value: @explorer.uri_pattern %>
+           <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method) %>
+           <%= f.submit "Send", class: 'button pill danger'%>
          <% end %>
        </div>
     </div>

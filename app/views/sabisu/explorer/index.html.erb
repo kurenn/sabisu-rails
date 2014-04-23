@@ -16,6 +16,7 @@
          <%= form_tag explorer_path, method: :get do %>
            <%= hidden_field_tag 'resource', params[:resource] %>
            <%= text_field_tag 'uri_pattern', params[:uri_pattern] %>
+           <%= select_tag 'http_method', options_for_select(Sabisu.http_methods, params[:http_method]) %>
            <%= submit_tag "Send", class: 'button pill danger'%>
          <% end %>
        </div>

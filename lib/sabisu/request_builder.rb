@@ -7,7 +7,7 @@ module Sabisu
 
     def initialize(resource, uri_pattern, http_method = 'get', body_params = {})
       @resource = resource 
-      @http_method = http_method.to_s
+      @http_method = http_method.to_s.downcase
       @body_params = body_params
       @uri_pattern = uri_pattern
     end

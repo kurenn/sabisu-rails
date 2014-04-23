@@ -14,4 +14,7 @@ Sabisu.setup do |config|
   # Headers to include on each request
   # config.api_headers = {}
 
+  # Layout configuration
+  # config.layout = "sabisu"
+
 end

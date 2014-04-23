@@ -26,6 +26,10 @@ module Sabisu
   mattr_accessor :api_headers
   @@api_headers = {}
 
+  # Layout
+  mattr_accessor :layout
+  @@layout = "sabisu"
+
   @@configured = false
 
   def self.configured? #:nodoc:

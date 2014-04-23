@@ -8,6 +8,10 @@ module Sabisu
        def copy_initializer
         template "sabisu.rb", "config/initializers/sabisu.rb"
        end
+
+       def mount_sabisu_engine
+         route %Q(mount Sabisu::Engine => "/sabisu") 
+       end
     end
   end
 end

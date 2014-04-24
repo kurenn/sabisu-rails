@@ -19,7 +19,7 @@
          <%= form_for :explorer, url: explorer_path, method: :get do |f| %>
            <%= f.hidden_field :resource, value: @explorer.resource %>
            <%= f.text_field :uri_pattern, value: @explorer.uri_pattern %>
-           <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method) %>
+           <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
 
            <fieldset>
              <legend><%= @explorer.resource_class %> attributes</legend>
@@ -50,7 +50,12 @@
        </div>
     </div>
 
+    <h3>Response status: <span class="text-success"><%= @response.code %></span></h3>
+
     <div class="row" id="result">
+      
+    </div>
+    <div class="row" id="headers_result">
       
     </div>
    </div>
@@ -59,7 +64,8 @@
 <%= content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-        $.JSONView(<%= @response.body.html_safe %>, $('#result'))
+        $.JSONView(<%= @response.body.html_safe %>, $('#result'));
+        $.JSONView(<%= @response.headers.to_json.html_safe %>, $('#headers_result'));
     });
   </script>
 <% end %>

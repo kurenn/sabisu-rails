@@ -5,9 +5,9 @@ module Sabisu
     base_uri Sabisu.base_api_uri
     headers Sabisu.api_headers
 
-    def initialize(explorer, body_params = {})
+    def initialize(explorer, body_params)
       @explorer = explorer
-      @body_params = body_params
+      @body_params = body_params || {}
     end
 
     def response 

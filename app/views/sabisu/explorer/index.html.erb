@@ -50,14 +50,19 @@
        </div>
     </div>
 
-    <h3>Response status: <span class="text-success"><%= @response.code %></span></h3>
+    <h3>Response status: <span class="label success radius"><%= @response.code %></span></h3>
 
-    <div class="row" id="result">
-      
-    </div>
-    <div class="row" id="headers_result">
-      
-    </div>
+    
+  <ul class="navigation inline" data-tabu>
+      <li><a href="#result">Response</a></li>
+      <li><a href="#headers_result">Header</a></li>
+  </ul>
+  <div class="tabu-content">
+      <div class="content" id="result">
+      </div>
+      <div class="content" id="headers_result">
+      </div>
+  </div>
    </div>
 </div>
 

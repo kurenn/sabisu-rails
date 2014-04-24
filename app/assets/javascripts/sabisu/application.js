@@ -7,3 +7,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require sabisu/KelpJSONView
+//= require furatto

@@ -11,7 +11,15 @@ module Sabisu
     end
 
     def response 
-      self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", body: @body_params)
+      self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", body: resource_body_params)
+    end
+
+    def resource_body_params
+      body_params = {}
+
+      body_params[@explorer.resource_name] = @body_params.reject { |k, v| v.blank? }
+
+      body_params
     end
   end
 end

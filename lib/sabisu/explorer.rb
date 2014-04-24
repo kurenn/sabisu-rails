@@ -8,7 +8,7 @@ module Sabisu
     def initialize(attrs = {})
       @resource = attrs[:resource]
       @uri_pattern = attrs[:uri_pattern]
-      @http_method = attrs[:http_method].downcase || "get"
+      @http_method = attrs[:http_method].nil? ? "get" : attrs[:http_method].downcase
     end
 
     # Method to retrieve the resource class name, such as User, Product, etc

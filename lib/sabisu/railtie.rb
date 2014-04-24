@@ -5,7 +5,7 @@ module Sabisu
     config.eager_load_namespaces << Sabisu
 
     ActiveSupport.on_load :active_record do
-      Sabisu.resources = Sabisu::RouteRecognizer.new.resources
+      Sabisu.resources = Sabisu::RouteRecognizer.new.resources if Sabisu.resources.empty?
     end
 
     config.after_initialize do

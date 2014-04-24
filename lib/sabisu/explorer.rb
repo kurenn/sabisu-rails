@@ -16,9 +16,20 @@ module Sabisu
       @resource_class ||= @resource.singularize.classify.constantize 
     end
 
+    def resource_name
+      @resource_name ||= @resource.singularize 
+    end
+
     def resource_columns
       resource_class.columns
     end
     
+    def resource_attributes
+      resource_columns.map(&:name) - Sabisu.ignored_attributes
+    end
+
+    def method_missing(meth, *args, &block)
+      resource_class.new.send(meth, *args, &block)
+    end
   end
 end

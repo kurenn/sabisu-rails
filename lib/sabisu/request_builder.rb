@@ -10,13 +10,9 @@ module Sabisu
       @body_params = body_params || {}
       @params = params
       @headers = []
+      @url_params = []
       header_params if @params[:headers].present?
-    end
-
-    def self.setup_headers(request_headers)
-      request_headers.map(&:raw).each do |header_hash|
-        headers header_hash if header_hash
-      end
+      url_params if @params[:url_params].present?
     end
 
     def request_headers
@@ -25,8 +21,14 @@ module Sabisu
       end
     end
 
+    def request_url_params
+      @url_params.each_with_object(Hash.new) do |param, hash|
+        hash[param.name] = param.value unless param.value.blank?
+      end
+    end
+
     def response 
-      self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", body: resource_body_params, headers: request_headers)
+      self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", body: resource_body_params, headers: request_headers, query: request_url_params)
     end
 
     def resource_body_params
@@ -34,7 +36,18 @@ module Sabisu
 
       body_params[@explorer.resource_name] = @body_params.reject { |k, v| v.blank? }
 
-      body_params
+      body_params 
+    end
+
+    def url_params 
+      url_params =  @params[:url_params].reject { |k,v| v.blank? }
+      index = 1
+      url_params.each do |k,v|
+        name = v["url_param_name_#{index}"] 
+        value = v["url_param_value_#{index}"] 
+        @url_params << Sabisu::Builders::UrlParamsBuilder.new(name, value)
+        index += 1
+      end
     end
 
     def header_params

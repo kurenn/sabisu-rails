@@ -22,6 +22,10 @@
            <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
 
            <a href="#" class="button pill" id="add_header">Add header</a>
+           <a href="#" class="button primary pill" id="add_url_param">Add URL params</a>
+           <div class="row" id="url_params_inputs">
+             
+           </div>
            <div class="row" id="header_inputs">
              
            </div>
@@ -29,22 +33,24 @@
            <%= f.submit "Send", class: 'button pill danger'%>
          <% end %>
 
-         <table>
-           <tr>
-             <th>Name</th>
-             <th>Type</th>
-             <th>Default</th>
-             <th>Required</th>
-           </tr>
-           <% @explorer.resource_columns.each do |column| %>
+         <div class="hidden">
+           <table>
              <tr>
-             <td><%= column.name %></td>    
-             <td><%= column.type %></td>    
-             <td><%= column.default || "NULL" %></td>    
-             <td><%= @explorer.required_attribute? column.name %></td>    
-           </tr>
-         <% end %>
-         </table>
+               <th>Name</th>
+               <th>Type</th>
+               <th>Default</th>
+               <th>Required</th>
+             </tr>
+             <% @explorer.resource_columns.each do |column| %>
+               <tr>
+               <td><%= column.name %></td>    
+               <td><%= column.type %></td>    
+               <td><%= column.default || "NULL" %></td>    
+               <td><%= @explorer.required_attribute? column.name %></td>    
+             </tr>
+           <% end %>
+           </table>
+         </div>
        </div>
     </div>
 

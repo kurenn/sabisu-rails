@@ -7,6 +7,7 @@ module Sabisu
   autoload :RouteRecognizer
   autoload :Explorer
   autoload :Helpers
+  autoload :Builders
   autoload :Header
 
   # We ignore some attribues that might cause a collision between models

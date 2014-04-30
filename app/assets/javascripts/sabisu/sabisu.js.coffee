@@ -20,3 +20,18 @@ $ ->
     e.preventDefault()
     $(@).parent('div').remove()
 
+  $addUrlParamButton = $('#add_url_param')
+  $urlParamsInputsWrapper = $('#url_params_inputs')
+  urlParamFieldId = 1
+
+  $addUrlParamButton.click (e) ->
+    e.preventDefault()
+    $urlParamsInputsWrapper.append("<div class='row'>
+    <div class='col-6'>
+    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_param_name_#{urlParamFieldId}]' id='explorer_header_name_#{urlParamFieldId}' placeholder='Param name'/><a href='#' class='remove_input'>&times;</a>
+    </div>
+    <div class='col-6'>
+    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_param_value_#{urlParamFieldId}]' id='explorer_header_value_#{urlParamFieldId}' placeholder='Param value'/><a href='#' class='remove_input'>&times;</a>
+    </div>
+    </div>")
+    urlParamFieldId++

@@ -7,6 +7,7 @@ module Sabisu
   autoload :RouteRecognizer
   autoload :Explorer
   autoload :Helpers
+  autoload :Header
 
   # We ignore some attribues that might cause a collision between models
   @@default_ignored_attributes = %w{ created_at updated_at id }

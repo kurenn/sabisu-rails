@@ -21,13 +21,11 @@
            <%= f.text_field :uri_pattern, value: @explorer.uri_pattern %>
            <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
 
-           <fieldset>
-             <legend><%= @explorer.resource_class %> attributes</legend>
-             <% @explorer.resource_attributes.each do |attribute| %>
-               <%= f.label attribute, label_attribute(@explorer, attribute) %>
-             <%= f.text_field attribute, name: "#{@explorer.resource_name}[#{attribute}]" %>
-           <% end %>
-           </fieldset>
+           <a href="#" class="button pill" id="add_header">Add header</a>
+           <div class="row" id="header_inputs">
+             
+           </div>
+
            <%= f.submit "Send", class: 'button pill danger'%>
          <% end %>
 

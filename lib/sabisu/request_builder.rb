@@ -43,8 +43,8 @@ module Sabisu
       url_params =  @params[:url_params].reject { |k,v| v.blank? }
       index = 1
       url_params.each do |k,v|
-        name = v["url_param_name_#{index}"] 
-        value = v["url_param_value_#{index}"] 
+        name = v["url_params_name_#{index}"] 
+        value = v["url_params_value_#{index}"] 
         @url_params << Sabisu::Builders::UrlParamsBuilder.new(name, value)
         index += 1
       end
@@ -56,7 +56,7 @@ module Sabisu
       headers.each do |k,v|
         name = v["header_name_#{index}"] 
         value = v["header_value_#{index}"] 
-        @headers << Sabisu::Header.new(name, value)
+        @headers << Sabisu::Builder::HeadersBuilder.new(name, value)
         index += 1
       end
     end

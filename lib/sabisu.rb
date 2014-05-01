@@ -8,7 +8,6 @@ module Sabisu
   autoload :Explorer
   autoload :Helpers
   autoload :Builders
-  autoload :Header
 
   # We ignore some attribues that might cause a collision between models
   @@default_ignored_attributes = %w{ created_at updated_at id }

@@ -1,5 +1,5 @@
 module Sabisu
-  class RequestBuilder
+  class Request
     include HTTParty
 
     base_uri Sabisu.base_api_uri

@@ -3,7 +3,7 @@ require 'httparty'
 module Sabisu
   extend ActiveSupport::Autoload
 
-  autoload :RequestBuilder
+  autoload :Request
   autoload :RouteRecognizer
   autoload :Explorer
   autoload :Helpers

@@ -16,19 +16,26 @@
        </div>
        <div class="col-10">
 
-         <%= form_for :explorer, url: explorer_path, method: :get do |f| %>
+         <%= form_for :explorer, url: explorer_path, method: :get, remote: true do |f| %>
            <%= f.hidden_field :resource, value: @explorer.resource %>
            <%= f.text_field :uri_pattern, value: @explorer.uri_pattern %>
            <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
 
            <a href="#" class="button pill" id="add_header">Add header</a>
            <a href="#" class="button primary pill" id="add_url_param">Add URL params</a>
-           <div class="row" id="url_params_inputs">
-             
-           </div>
-           <div class="row" id="header_inputs">
-             
-           </div>
+           <fieldset>
+             <legend>URL params</legend>
+             <div class="row" id="url_params_inputs">
+               
+             </div>
+           </fieldset>
+           <br />
+           <fieldset>
+             <legend>Headers</legend>
+             <div class="row" id="header_inputs">
+               
+             </div>
+           </fieldset>
 
            <%= f.submit "Send", class: 'button pill danger'%>
          <% end %>
@@ -54,7 +61,7 @@
        </div>
     </div>
 
-    <h3>Response status: <span class="label success radius"><%= @response.code %></span></h3>
+    <h3>Response status: <span class="label success radius" id="response_status"><%= @response.code %></span></h3>
 
     
   <ul class="navigation inline" data-tabu>

@@ -1,0 +1,3 @@
+$.JSONView(<%= @response.body.html_safe %>, $('#result'));
+$.JSONView(<%= @response.headers.to_json.html_safe %>, $('#headers_result'));
+$("#response_status").html(<%= @response.code %>);

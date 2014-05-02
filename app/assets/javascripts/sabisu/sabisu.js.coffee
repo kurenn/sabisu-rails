@@ -28,10 +28,10 @@ $ ->
     e.preventDefault()
     $urlParamsInputsWrapper.append("<div class='row'>
     <div class='col-6'>
-    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_param_name_#{urlParamFieldId}]' id='explorer_header_name_#{urlParamFieldId}' placeholder='Param name'/><a href='#' class='remove_input'>&times;</a>
+    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_params_name_#{urlParamFieldId}]' id='explorer_url_params_name_#{urlParamFieldId}' placeholder='Param name'/><a href='#' class='remove_input'>&times;</a>
     </div>
     <div class='col-6'>
-    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_param_value_#{urlParamFieldId}]' id='explorer_header_value_#{urlParamFieldId}' placeholder='Param value'/><a href='#' class='remove_input'>&times;</a>
+    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_params_value_#{urlParamFieldId}]' id='explorer_url_params_value_#{urlParamFieldId}' placeholder='Param value'/><a href='#' class='remove_input'>&times;</a>
     </div>
     </div>")
     urlParamFieldId++

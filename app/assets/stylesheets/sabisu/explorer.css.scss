@@ -42,10 +42,16 @@
 
 fieldset {
   border: none;
-  border-bottom: 1px solid lighten(#999, 10%);
   padding: 0 0 8px 0;
   margin-bottom: 30px;
   margin-top: 15px;
   color: #555;
   text-transform: uppercase;
+
+  legend {
+    border-bottom: 1px solid lighten(#999, 10%);
+    display: block;
+    width: 100%;
+    padding-bottom: 8px;
+  }
 }

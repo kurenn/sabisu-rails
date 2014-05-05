@@ -1,0 +1,18 @@
+// Navigation overrides
+$navigation-header-color: #FFF;
+$navigation-header-font-size: px-to-rems(16);
+$navigation-list-item-active-color: #FFF;
+$navigation-list-link-display: block;
+$navigation-list-link-padding: 12px 0;
+$navigation-link-color: #333;
+$navigation-list-item-font-size: 1rem;
+
+// Base overrides
+$body-background-color: #F5F5F5;
+
+// Buttons
+$button-default-background-color: #EA5D5F;
+$button-primary-background: #B2759B;
+
+// Labels
+$label-default-background: $button-default-background-color;

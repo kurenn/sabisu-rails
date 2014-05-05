@@ -1,0 +1,51 @@
+.main-content {
+  border-left: 1px solid darken(#F5F5F5, 5%);
+  padding-left: 30px;
+  background: #FFF;
+}
+
+.navigation {
+  &.side {
+    height: 100%;
+    padding: 0;
+    .header {
+      background: #EA5D5F;
+      border: 1px solid darken(#EA5D5F, 4%);
+      padding-left: 20px;
+      padding-top: 50px;
+      padding-bottom: 10px;
+
+      &:hover {
+        background: #EA5D5F;
+        border: 1px solid darken(#EA5D5F, 4%);
+      }
+    }
+
+    li {
+      padding-left: 20px;
+      cursor: pointer;
+      &:hover {
+        background: #7BD5D3; 
+      }
+    }
+
+    li.active {
+      background: #7BD5D3; 
+      border: 1px solid darken(#7BD5D3, 4%);
+    }
+  }
+}
+
+.nomargin {
+  margin: 0;
+}
+
+fieldset {
+  border: none;
+  border-bottom: 1px solid lighten(#999, 10%);
+  padding: 0 0 8px 0;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  color: #555;
+  text-transform: uppercase;
+}

@@ -1,87 +1,99 @@
 <div class="row">
-   <div class="col-2">
-    <h1>Resources</h1>
-    <ul class="navigation">
-    <% @resources.each do |resource| %>
-      <li><%= link_to resource.capitalize, explorer_path(explorer: { resource: resource }) %></li>
+  <div class="col-2 nopadding">
+    <ul class="navigation side">
+      <li class="header">WaterApp - <br /> Api Explorer</li>
+      <% @resources.each do |resource| %>
+        <li class="<%= active_resource_state(resource) %>"><%= link_to resource.capitalize, explorer_path(explorer: { resource: resource }) %></li>
     <% end %>
     </ul>
-   </div>
-   <div class="col-10">
-    <h1>Api explorer</h1>
-
-    <div class="row">
-       <div class="col-2">
-         <span class="text-muted"><%= "/#{@explorer.resource}/" %></span>
-       </div>
-       <div class="col-10">
-
-         <%= form_for :explorer, url: explorer_path, method: :get, remote: true do |f| %>
-           <%= f.hidden_field :resource, value: @explorer.resource %>
-           <%= f.text_field :uri_pattern, value: @explorer.uri_pattern %>
-           <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
-
-           <a href="#" class="button pill" id="add_header">Add header</a>
-           <a href="#" class="button primary pill" id="add_url_param">Add URL params</a>
-           <fieldset>
-             <legend>URL params</legend>
-             <div class="row" id="url_params_inputs">
-               
-             </div>
-           </fieldset>
-           <br />
-           <fieldset>
-             <legend>Headers</legend>
-             <div class="row" id="header_inputs">
-               
-             </div>
-           </fieldset>
-
-           <%= f.submit "Send", class: 'button pill danger'%>
-         <% end %>
-
-         <div class="hidden">
-           <table>
-             <tr>
-               <th>Name</th>
-               <th>Type</th>
-               <th>Default</th>
-               <th>Required</th>
-             </tr>
-             <% @explorer.resource_columns.each do |column| %>
-               <tr>
-               <td><%= column.name %></td>    
-               <td><%= column.type %></td>    
-               <td><%= column.default || "NULL" %></td>    
-               <td><%= @explorer.required_attribute? column.name %></td>    
-             </tr>
-           <% end %>
-           </table>
-         </div>
-       </div>
-    </div>
-
-    <h3>Response status: <span class="label success radius" id="response_status"><%= @response.code %></span></h3>
-
-    
-  <ul class="navigation inline" data-tabu>
-      <li><a href="#result">Response</a></li>
-      <li><a href="#headers_result">Header</a></li>
-  </ul>
-  <div class="tabu-content">
-      <div class="content" id="result">
-      </div>
-      <div class="content" id="headers_result">
-      </div>
   </div>
-   </div>
-</div>
+  <div class="col-10 nopadding">
+    <div class="main-content">
+      <div class="row">
+        <div class="col-2">
+          <h4 class="text-muted"><%= "/#{@explorer.resource}/" %></h4>
+        </div>
+        <div class="col-10">
 
+          <%= form_for :explorer, url: explorer_path, method: :get, remote: true do |f| %>
+            <%= f.hidden_field :resource, value: @explorer.resource %>
+            <div class="row">
+              <div class="col-6">
+               <%= f.text_field :uri_pattern, value: @explorer.uri_pattern, placeholder: "URI pattern. 1 or bids or orders/1" %>
+              </div>
+              <div class="col-2">
+                <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
+              </div>
+              <div class="col-2">
+                <a href="#" class="button radius block nomargin three-d" id="add_header"><i class="fa fa-indent"></i> Headers</a>
+              </div>
+              <div class="col-2">
+                <a href="#" class="button radius block nomargin three-d" id="add_url_param"><i class="fa fa-link"></i>Url params</a>
+              </div>
+            </div>
+
+          <fieldset>
+            <legend>Url params (<span class="label round">0</span>)</legend>
+            <div class="row" id="url_params_inputs">
+
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Headers (<span class="label round">0</span>)</legend>
+            <div class="row" id="header_inputs">
+
+            </div>
+          </fieldset>
+
+          <%= f.submit "Send", class: 'button large'%>
+        <% end %>
+
+          <div class="hidden">
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Required</th>
+              </tr>
+              <% @explorer.resource_columns.each do |column| %>
+                <tr>
+                <td><%= column.name %></td>    
+                <td><%= column.type %></td>    
+                <td><%= column.default || "NULL" %></td>    
+                <td><%= @explorer.required_attribute? column.name %></td>    
+              </tr>
+            <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <h3>Response status: <span class="label success radius" id="response_status"><%= @response.code %></span></h3>
+
+      <hr />
+
+      <ul class="navigation inline" data-tabu>
+        <li><a href="#result">Response</a></li>
+        <li><a href="#headers_result">Header</a></li>
+      </ul>
+      <div class="tabu-content">
+        <div class="content row" id="result">
+        </div>
+        <div class="content row" id="headers_result">
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+</div>
 <%= content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
-        $.JSONView(<%= @response.body.html_safe %>, $('#result'));
-        $.JSONView(<%= @response.headers.to_json.html_safe %>, $('#headers_result'));
+$(document).ready(function(){
+    $.JSONView(<%= @response.body.html_safe %>, $('#result'));
+    $.JSONView(<%= @response.headers.to_json.html_safe %>, $('#headers_result'));
     });
-  </script>
+</script>
 <% end %>

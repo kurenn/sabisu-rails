@@ -25,27 +25,27 @@
                 <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
               </div>
               <div class="col-2">
-                <a href="#" class="button radius block nomargin three-d" id="add_header"><i class="fa fa-indent"></i> Headers</a>
+                <a href="#" class="button radius block nomargin three-d explorer-fields-link-js" data-target="#url_params_inputs" data-type="url_params"><i class="fa fa-link"></i>Url params</a>
               </div>
               <div class="col-2">
-                <a href="#" class="button radius block nomargin three-d" id="add_url_param"><i class="fa fa-link"></i>Url params</a>
+                <a href="#" class="button radius block nomargin three-d explorer-fields-link-js" data-target="#header_inputs" data-type="headers"><i class="fa fa-indent"></i> Headers</a>
               </div>
             </div>
-
+          <br />
           <fieldset>
-            <legend>Url params (<span class="label round">0</span>)</legend>
+            <legend>Url params (<span class="label round" id="url_params_counter_js">0</span>)</legend>
             <div class="row" id="url_params_inputs">
 
             </div>
           </fieldset>
           <fieldset>
-            <legend>Headers (<span class="label round">0</span>)</legend>
+            <legend>Headers (<span class="label round" id="headers_counter_js">0</span>)</legend>
             <div class="row" id="header_inputs">
 
             </div>
           </fieldset>
 
-          <%= f.submit "Send", class: 'button large'%>
+          <%= f.submit "Send", class: 'button large radius three-d success'%>
         <% end %>
 
           <div class="hidden">

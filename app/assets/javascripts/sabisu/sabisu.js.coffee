@@ -1,37 +1,35 @@
+capitalize = (str) ->
+  str[0].toUpperCase() + str.slice(1)
+
 $ ->
-  $addButton = $('#add_header')
-  $headerInputsWrapper = $('#header_inputs')
+  $addButtons = $('.explorer-fields-link-js')
   fieldId = 1
 
-  $addButton.click (e) ->
+  $addButtons.on 'click', (e) ->
     e.preventDefault()
-    $headerInputsWrapper.append("<div class='row'>
-    <div class='col-6'>
-    <input type='text' name='explorer[headers][#{fieldId}][header_name_#{fieldId}]' id='explorer_header_name_#{fieldId}' placeholder='Header name'/><a href='#' class='remove_input'>&times;</a>
-    </div>
-    <div class='col-6'>
-    <input type='text' name='explorer[headers][#{fieldId}][header_value_#{fieldId}]' id='explorer_header_value_#{fieldId}' placeholder='Header value'/><a href='#' class='remove_input'>&times;</a>
-    </div>
-    </div>")
-    fieldId++
+    $wrapperTarget = $($(@).data('target'))
+    inputType = $(@).data('type')
+    singleInputType = capitalize(inputType.substring(0, inputType.length - 1).replace("_", " "))
 
+    fieldsToAppend = "<div class='row'>
+    <div class='col-5'>
+    <input type='text' name='explorer[#{inputType}][#{fieldId}][#{inputType}_name_#{fieldId}]' id='explorer_#{inputType}_name_#{fieldId}' placeholder='#{singleInputType} name'/>
+    </div>
+    <div class='col-6'>
+    <input type='text' name='explorer[#{inputType}][#{fieldId}][#{inputType}_value_#{fieldId}]' id='explorer_#{inputType}_value_#{fieldId}' placeholder='#{singleInputType} value'/>
+    </div>
+    <div class='col-1'>
+    <a href='#' class='remove_input button radius nomargin danger three-d' data-counter='##{inputType}_counter_js'><i class='fa fa-trash-o'></i></a>
+    </div>
+    </div>"
+
+    $wrapperTarget.append(fieldsToAppend)
+    $("##{inputType}_counter_js").text($wrapperTarget.children().length)
+    fieldId++
 
   $(document).on 'click', '.remove_input', (e) ->
     e.preventDefault()
-    $(@).parent('div').remove()
-
-  $addUrlParamButton = $('#add_url_param')
-  $urlParamsInputsWrapper = $('#url_params_inputs')
-  urlParamFieldId = 1
-
-  $addUrlParamButton.click (e) ->
-    e.preventDefault()
-    $urlParamsInputsWrapper.append("<div class='row'>
-    <div class='col-6'>
-    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_params_name_#{urlParamFieldId}]' id='explorer_url_params_name_#{urlParamFieldId}' placeholder='Param name'/><a href='#' class='remove_input'>&times;</a>
-    </div>
-    <div class='col-6'>
-    <input type='text' name='explorer[url_params][#{urlParamFieldId}][url_params_value_#{urlParamFieldId}]' id='explorer_url_params_value_#{urlParamFieldId}' placeholder='Param value'/><a href='#' class='remove_input'>&times;</a>
-    </div>
-    </div>")
-    urlParamFieldId++
+    inputsWrapper = $(@).parent().parent().parent()
+    counter = $($(@).data('counter'))
+    $(@).parent().parent().remove()
+    counter.text(inputsWrapper.children().length)

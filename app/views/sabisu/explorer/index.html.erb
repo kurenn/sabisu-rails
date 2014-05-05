@@ -17,20 +17,20 @@
 
           <%= form_for :explorer, url: explorer_path, method: :get, remote: true do |f| %>
             <%= f.hidden_field :resource, value: @explorer.resource %>
-            <div class="row">
-              <div class="col-6">
-               <%= f.text_field :uri_pattern, value: @explorer.uri_pattern, placeholder: "URI pattern. 1 or bids or orders/1" %>
-              </div>
-              <div class="col-2">
-                <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
-              </div>
-              <div class="col-2">
-                <a href="#" class="button radius block nomargin three-d explorer-fields-link-js" data-target="#url_params_inputs" data-type="url_params"><i class="fa fa-link"></i>Url params</a>
-              </div>
-              <div class="col-2">
-                <a href="#" class="button radius block nomargin three-d explorer-fields-link-js" data-target="#header_inputs" data-type="headers"><i class="fa fa-indent"></i> Headers</a>
-              </div>
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :uri_pattern, value: @explorer.uri_pattern, placeholder: "URI pattern. 1 or bids or orders/1" %>
             </div>
+            <div class="col-2">
+              <%= f.select :http_method, options_for_select(Sabisu.http_methods, @explorer.http_method.upcase) %>
+            </div>
+            <div class="col-2">
+              <a href="#" class="button radius block nomargin three-d explorer-fields-link-js" data-target="#url_params_inputs" data-type="url_params"><i class="fa fa-link"></i>Url params</a>
+            </div>
+            <div class="col-2">
+              <a href="#" class="button radius block nomargin three-d explorer-fields-link-js" data-target="#header_inputs" data-type="headers"><i class="fa fa-indent"></i> Headers</a>
+            </div>
+          </div>
           <br />
           <fieldset>
             <legend>Url params (<span class="label round" id="url_params_counter_js">0</span>)</legend>
@@ -47,53 +47,40 @@
 
           <%= f.submit "Send", class: 'button large radius three-d success'%>
         <% end %>
+        </div>
+      </div>
 
-          <div class="hidden">
-            <table>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Required</th>
-              </tr>
-              <% @explorer.resource_columns.each do |column| %>
-                <tr>
-                <td><%= column.name %></td>    
-                <td><%= column.type %></td>    
-                <td><%= column.default || "NULL" %></td>    
-                <td><%= @explorer.required_attribute? column.name %></td>    
-              </tr>
-            <% end %>
-            </table>
+      <div class="response-wrapper">
+      <hr />
+
+      <div class="row">
+        <div class="response-details">
+           <ul class="navigation inline">
+             <li><small><strong>STATUS:</strong></small> <span class="label primary radius"><%= @response.code %></span></li>
+             <li><small><strong>TIME:</strong></small> <span class="label primary radius"><%= @response.headers['x-runtime'] %> ms</span></li>
+           </ul>
+        </div>
+        <ul class="navigation inline" data-tabu>
+          <li><a href="#result">Body</a></li>
+          <li><a href="#headers_result">Headers</a></li>
+        </ul>
+        <div class="tabu-content">
+          <div class="content row" id="result">
+          </div>
+          <div class="content row" id="headers_result">
+            <%= @response.headers.inspect %>
           </div>
         </div>
       </div>
-
-      <h3>Response status: <span class="label success radius" id="response_status"><%= @response.code %></span></h3>
-
-      <hr />
-
-      <ul class="navigation inline" data-tabu>
-        <li><a href="#result">Response</a></li>
-        <li><a href="#headers_result">Header</a></li>
-      </ul>
-      <div class="tabu-content">
-        <div class="content row" id="result">
-        </div>
-        <div class="content row" id="headers_result">
-        </div>
       </div>
-      <br />
-      <br />
-      <br />
     </div>
   </div>
 </div>
+
 <%= content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
 $(document).ready(function(){
     $.JSONView(<%= @response.body.html_safe %>, $('#result'));
-    $.JSONView(<%= @response.headers.to_json.html_safe %>, $('#headers_result'));
     });
 </script>
 <% end %>

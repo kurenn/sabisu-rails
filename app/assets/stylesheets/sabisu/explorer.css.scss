@@ -2,6 +2,7 @@
   border-left: 1px solid darken(#F5F5F5, 5%);
   padding-left: 30px;
   background: #FFF;
+  margin-bottom: 20px;
 }
 
 .navigation {
@@ -73,4 +74,27 @@ fieldset {
   &.danger {
     color: #777; 
   }
+}
+
+.navigation {
+  &.inline {
+    li {
+      a {
+        padding: 2px 5px;
+      }
+
+      &.active {
+        border-top: 2px solid darken($navigation-inline-active-background, 10%);
+      }
+    }
+  }
+}
+
+.response-details {
+  float: right;
+  padding-right: 25px;
+}
+
+.response-wrapper {
+  padding-right: 10px;
 }

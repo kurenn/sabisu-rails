@@ -15,7 +15,7 @@
         </div>
         <div class="col-10">
 
-          <%= form_for :explorer, url: explorer_path, method: :get, remote: true do |f| %>
+          <%= form_for :explorer, url: explorer_path, html: {id: 'explorer_form'}, method: :get, remote: true do |f| %>
             <%= f.hidden_field :resource, value: @explorer.resource %>
           <div class="row">
             <div class="col-6">
@@ -45,7 +45,7 @@
             </div>
           </fieldset>
 
-          <%= f.submit "Send", class: 'button large radius three-d success'%>
+          <%= f.submit "Send", class: 'button large radius three-d success', :disable_with => "Processing..." %>
         <% end %>
         </div>
       </div>

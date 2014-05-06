@@ -9,3 +9,4 @@
 //= require sabisu/KelpJSONView
 //= require furatto
 //= require sabisu/sabisu
+//= require sabisu/pace

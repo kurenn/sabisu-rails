@@ -33,3 +33,8 @@ $ ->
     counter = $($(@).data('counter'))
     $(@).parent().parent().remove()
     counter.text(inputsWrapper.children().length)
+
+  $('#explorer_form').submit ->
+    Pace.start()
+
+    

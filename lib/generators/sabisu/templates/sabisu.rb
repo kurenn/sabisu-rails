@@ -17,4 +17,7 @@ Sabisu.setup do |config|
   # Layout configuration
   # config.layout = "sabisu"
 
+  # Resources on the api
+  # config.resources = [:products, :users...]
+
 end

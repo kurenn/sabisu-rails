@@ -56,8 +56,8 @@
       <div class="row">
         <div class="response-details">
            <ul class="navigation inline">
-             <li><small><strong>STATUS:</strong></small> <span class="label primary radius"><%= @response.code %></span></li>
-             <li><small><strong>TIME:</strong></small> <span class="label primary radius"><%= @response.headers['x-runtime'] %> ms</span></li>
+             <li><small><strong>STATUS:</strong></small> <span class="label primary radius" id="response_status"><%= @response.code %></span></li>
+             <li><small><strong>TIME:</strong></small> <span class="label primary radius" id="response_time"><%= @response.headers['x-runtime'] %> ms</span></li>
            </ul>
         </div>
         <ul class="navigation inline" data-tabu>
@@ -67,8 +67,8 @@
         <div class="tabu-content">
           <div class="content row" id="result">
           </div>
-          <div class="content row" id="headers_result">
-            <%= @response.headers.inspect %>
+          <div class="content row headers" id="headers_result">
+            <%= prettify_headers @response.headers %>
           </div>
         </div>
       </div>

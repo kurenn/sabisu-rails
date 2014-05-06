@@ -2,7 +2,7 @@
   border-left: 1px solid darken(#F5F5F5, 5%);
   padding-left: 30px;
   background: #FFF;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .navigation {
@@ -97,4 +97,20 @@ fieldset {
 
 .response-wrapper {
   padding-right: 10px;
+}
+
+.text-strong {
+  font-weight: bold;
+}
+
+.headers {
+  span {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+
+  i.fa {
+    margin: 0 8px;
+  }
 }

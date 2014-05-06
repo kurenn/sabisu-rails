@@ -1,3 +1,4 @@
 $.JSONView(<%= @response.body.html_safe %>, $('#result'));
-$.JSONView(<%= @response.headers.to_json.html_safe %>, $('#headers_result'));
-$("#response_status").html(<%= @response.code %>);
+$("#response_status").text(<%= @response.code %>);
+$("#response_time").text(<%= @response.headers['x-runtime'] %>);
+$('#headers_result').html("<%= j prettify_headers @response.headers %>");

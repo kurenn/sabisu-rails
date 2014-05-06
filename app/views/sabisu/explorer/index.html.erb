@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-2 nopadding">
     <ul class="navigation side">
-      <li class="header">WaterApp - <br /> Api Explorer</li>
+      <li class="header"><%= Sabisu.app_name %> - <br /> Api Explorer</li>
       <% @resources.each do |resource| %>
         <li class="<%= active_resource_state(resource) %>"><%= link_to resource.capitalize, explorer_path(explorer: { resource: resource }) %></li>
     <% end %>

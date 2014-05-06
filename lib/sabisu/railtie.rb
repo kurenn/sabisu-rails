@@ -6,6 +6,7 @@ module Sabisu
 
     ActiveSupport.on_load :active_record do
       Sabisu.resources = Sabisu::RouteRecognizer.new.resources if Sabisu.resources.empty?
+      Sabisu.app_name = Rails.application.class.parent_name
     end
 
     config.after_initialize do

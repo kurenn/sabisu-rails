@@ -40,6 +40,9 @@ module Sabisu
 
   @@configured = false
 
+  mattr_accessor :app_name
+  @@app_name = 'Sabisu'
+
   def self.configured? #:nodoc:
     @@configured  
   end
@@ -47,6 +50,7 @@ module Sabisu
   #Method to configure sabisu
   def self.setup
     @@configured = true
+
     yield self
   end
 

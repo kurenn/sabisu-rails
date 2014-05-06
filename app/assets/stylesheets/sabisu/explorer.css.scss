@@ -80,7 +80,8 @@ fieldset {
   &.inline {
     li {
       a {
-        padding: 2px 5px;
+        padding: 8px;
+        font-weight: lighter;
       }
 
       &.active {

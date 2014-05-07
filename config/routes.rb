@@ -1,3 +1,3 @@
-Sabisu::Engine.routes.draw do
+SabisuRails::Engine.routes.draw do
   get "explorer", to: "explorer#index"
 end

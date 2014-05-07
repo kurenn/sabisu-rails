@@ -1,4 +1,4 @@
-# [Sabisu](https://github.com/IcaliaLabs/sabisu)
+# [Sabisu](https://github.com/IcaliaLabs/sabisu-rails)
 
 Sabisu is a powerful postman-like engine client to explore your Rails application api. It's still under heavy development, but it is quite impressive and beautiful. Give it a try!
 

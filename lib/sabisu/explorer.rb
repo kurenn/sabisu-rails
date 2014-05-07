@@ -6,7 +6,7 @@ module Sabisu
     attr_reader :resource, :uri_pattern, :http_method
 
     def initialize(attrs = {})
-      @resource = attrs[:resource]
+      @resource = attrs[:resource] || Sabisu.default_resource
       @uri_pattern = attrs[:uri_pattern]
       @http_method = attrs[:http_method].nil? ? "get" : attrs[:http_method].downcase
     end

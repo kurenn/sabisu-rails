@@ -8,9 +8,9 @@ module Sabisu
     def initialize(explorer, body_params, params)
       @explorer = explorer
       @body_params = body_params || {}
-      @params = params
-      @headers = Sabisu::Builders::HeadersBuilder.new(params[:headers]).build
-      @url_params = Sabisu::Builders::UrlParamsBuilder.new(params[:url_params]).build
+      @params = params || {}
+      @headers = Sabisu::Builders::HeadersBuilder.new(@params[:headers]).build
+      @url_params = Sabisu::Builders::UrlParamsBuilder.new(@params[:url_params]).build
     end
 
     def response 

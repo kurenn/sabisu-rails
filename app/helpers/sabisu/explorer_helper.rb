@@ -1,10 +1,16 @@
 module Sabisu::ExplorerHelper
+
   def label_attribute(explorer, attr)
     explorer.required_attribute?(attr) ? "* #{attr.capitalize}" : attr.capitalize
   end
 
   def active_resource_state(resource)
-    "active" if params[:explorer][:resource] == resource
+    loaded_resource = Sabisu.default_resource
+    if params[:explorer].nil?
+      "active" if loaded_resource  == resource
+    else
+      "active" if params[:explorer][:resource] == resource
+    end
   end
 
   def prettify_headers(headers)

@@ -48,6 +48,8 @@ module Sabisu
   mattr_accessor :app_name
   @@app_name = 'Sabisu'
 
+  mattr_accessor :default_resource
+
   @@configured = false
 
   def self.configured? #:nodoc:

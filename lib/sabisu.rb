@@ -38,10 +38,17 @@ module Sabisu
   mattr_accessor :resources
   @@resources = []
 
-  @@configured = false
+  # Authentication
+  mattr_accessor :authentication_username
+  @@authentication_username = "admin"
+
+  mattr_accessor :authentication_password
+  @@authentication_password = "sekret"
 
   mattr_accessor :app_name
   @@app_name = 'Sabisu'
+
+  @@configured = false
 
   def self.configured? #:nodoc:
     @@configured  

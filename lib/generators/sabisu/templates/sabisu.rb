@@ -24,4 +24,11 @@ Sabisu.setup do |config|
   # mattr_accessor :app_name
   # @@app_name = Rails.application.class.parent_name
 
+  # Authentication
+  # mattr_accessor :authentication_username
+  # @@authentication_username = "admin"
+
+  # mattr_accessor :authentication_password
+  # @@authentication_password = "sekret"
+
 end

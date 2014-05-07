@@ -13,7 +13,7 @@ module SabisuRails
 
     # Method to retrieve the resource class name, such as User, Product, etc
     def resource_class
-      @resource_class ||= @resource.singularize.classify.constantize 
+      @resource_class ||= @resource.singularize.camelize.constantize 
     end
 
     def resource_name

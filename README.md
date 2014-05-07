@@ -6,7 +6,7 @@ It was created by [Abraham Kuri](https://twitter.com/kurenn) from [Icalia Labs](
 
 To get started, checkout:
 
-#### [http://icalialabs.github.io/sabisu/](http://icalialabs.github.io/sabisu/)
+#### [http://icalialabs.github.io/sabisu-rails/](http://icalialabs.github.io/sabisu-rails/)
 
 ## Table of contents
 
@@ -37,23 +37,23 @@ $ bundle install
 After you install Sabisu you need to run the generator:
 
 ```console
-rails g sabisu:install
+rails g sabisu_rails:install
 ```
 
 The generator will install in initializer which describes all the Sabisu configuration options.
 
 Some of these configuration options include you api endpoint base uri, so as your resources, so you better take a look at it.
 
-Once you are done with the configuration, start your rails application and navigate to `http://localhost:3000/sabisu/explorer`
+Once you are done with the configuration, start your rails application and navigate to `http://localhost:3000/sabisu_rails/explorer`
 
 If everything went good you should see a nice explorer interface with your resources.
 
 ## Customization
 
-Sabisu is highly customizable to make your life easier, here is a quick example of a real app configuration, remember you have the configuration file under `config/initializers/sabisu.rb`.
+Sabisu is highly customizable to make your life easier, here is a quick example of a real app configuration, remember you have the configuration file under `config/initializers/sabisu_rails.rb`.
 
 ```ruby
-Sabisu.setup do |config|
+SabisuRails.setup do |config|
 
   # Base uri for posting the 
    config.base_api_uri = 'api.sabisu.dev'
@@ -76,9 +76,9 @@ We invite you to look at the full file for further customization.
 
 ## Bug tracker & feature request
 
-Have a bug or a feature request? [Please open a new issue](https://github.com/IcaliaLabs/sabisu/issues). Before opening any issue, please search for existing issues.
+Have a bug or a feature request? [Please open a new issue](https://github.com/IcaliaLabs/sabisu-rails/issues). Before opening any issue, please search for existing issues.
 
-We recommend you to read the version [milestiones](https://github.com/IcaliaLabs/sabisu/issues?milestone=2&state=open) if you feel like want to collaborate.
+We recommend you to read the version [milestiones](https://github.com/IcaliaLabs/sabisu-rails/issues?milestone=2&state=open) if you feel like want to collaborate.
 
 ## Contributing
 

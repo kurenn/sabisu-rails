@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sabisu/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sabisu"
+  spec.name          = "sabisu-rails"
   spec.version       = Sabisu::VERSION.dup
   spec.authors       = ["Abraham Kuri"]
   spec.email         = ["kurenn@icalialabs.com"]

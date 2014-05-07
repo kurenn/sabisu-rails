@@ -23,7 +23,7 @@ To get started, checkout:
 Install sabisu is extremely easy, just add some gems to your `Gemfile`
 
 ```ruby
-gem 'sabisu'
+gem 'sabisu-rails'
 gem 'compass-rails'
 gem 'furatto'
 gem 'font-awesome-rails'

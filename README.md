@@ -103,6 +103,29 @@ Keep track of new feautres, development issues and community news.
 + [http://github.com/kurenn](http://github.com/kurenn)
 + [http://klout.com/#/kurenn](http://klout.com/#/kurenn)
 
+## A live example
+
+We have deployed an example application on Heroku for you to give it a spin, visit `http://sabisu.herokuapp.com/sabisu_rails/explorer` and because is a demo the api only has GET endpoints.
+
+The authentication credentials are:
+
+```
+username: admin
+password: sekret
+```
+
+The file configuration for Heroku turns out to be more complex, check it out:
+
+```ruby
+SabisuRails.setup do |config|
+
+  config.base_api_uri = ENV['API_URL']
+  config.resources = ["products", "users"]
+  config.default_resource = "users"
+
+end
+```
+
 
 ## Copyright and license
 

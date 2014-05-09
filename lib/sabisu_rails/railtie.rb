@@ -7,8 +7,9 @@ module SabisuRails
     ActiveSupport.on_load :active_record do
       if SabisuRails.resources.empty?
         SabisuRails.resources = SabisuRails::RouteRecognizer.new.resources 
-        SabisuRails.default_resource = SabisuRails.resources.first.to_s
+        SabisuRails.default_resource = SabisuRails.stringyfied_resources.first
       end
+      #SabisuRails.resources.map!(&:to_s)
       SabisuRails.app_name = Rails.application.class.parent_name
     end
 

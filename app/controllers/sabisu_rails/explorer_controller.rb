@@ -2,7 +2,7 @@ module SabisuRails
   class ExplorerController < SabisuRails::BaseController
 
     def index
-      @resources = SabisuRails.resources
+      @resources = SabisuRails.stringyfied_resources
       @explorer = SabisuRails::Explorer.new(params[:explorer] || {})
       @response = SabisuRails::Request.new(@explorer, params[@explorer.resource_name], params[:explorer]).response
       respond_to do |format|

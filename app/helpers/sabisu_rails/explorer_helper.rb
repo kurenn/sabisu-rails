@@ -5,7 +5,7 @@ module SabisuRails::ExplorerHelper
   end
 
   def active_resource_state(resource)
-    loaded_resource = SabisuRails.default_resource
+    loaded_resource = SabisuRails.default_resource.to_s
     if params[:explorer].nil?
       "active" if loaded_resource  == resource
     else

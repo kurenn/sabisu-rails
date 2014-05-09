@@ -56,6 +56,10 @@ module SabisuRails
     @@configured  
   end
 
+  def self.stringyfied_resources
+    @@stringyfied_resources ||= self.resources.map(&:to_s)
+  end
+
   #Method to configure sabisu
   def self.setup
     @@configured = true

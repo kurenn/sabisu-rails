@@ -15,7 +15,7 @@
         </div>
         <div class="col-10">
 
-          <%= form_for :explorer, url: explorer_path, html: {id: 'explorer_form'}, method: :get, remote: true do |f| %>
+          <%= simple_form_for :explorer, url: explorer_path, html: {id: 'explorer_form'}, method: :get, remote: true do |f| %>
             <%= f.hidden_field :resource, value: @explorer.resource %>
           <div class="row">
             <div class="col-6">
@@ -32,6 +32,14 @@
             </div>
           </div>
           <br />
+
+          <fieldset>
+            <legend><%= @explorer.resource_class %> attributes</legend>
+            <% @explorer.resource_attributes.each do |attribute| %>
+              <%= f.input attribute, input_html: {name: "#{@explorer.resource_name}[#{attribute}]" } %>
+          <% end %>
+          </fieldset>
+          
           <fieldset>
             <legend>Url params (<span class="label round" id="url_params_counter_js">0</span>)</legend>
             <div class="row" id="url_params_inputs">

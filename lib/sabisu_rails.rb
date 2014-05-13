@@ -38,6 +38,8 @@ module SabisuRails
   mattr_accessor :resources
   @@resources = []
 
+  mattr_reader :resources_names
+
   # Authentication
   mattr_accessor :authentication_username
   @@authentication_username = "admin"
@@ -56,8 +58,8 @@ module SabisuRails
     @@configured  
   end
 
-  def self.stringyfied_resources
-    @@stringyfied_resources ||= self.resources.map(&:to_s)
+  def self.resources_names
+    @@resources_names ||= @@resources.map { |resource| resource.is_a?(Hash) ? resource.keys[0].to_s : resource.to_s }
   end
 
   #Method to configure sabisu

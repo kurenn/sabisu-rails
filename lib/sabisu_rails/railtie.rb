@@ -5,11 +5,7 @@ module SabisuRails
     config.eager_load_namespaces << SabisuRails
 
     ActiveSupport.on_load :active_record do
-      if SabisuRails.resources.empty?
-        SabisuRails.resources = SabisuRails::RouteRecognizer.new.resources 
-        SabisuRails.default_resource = SabisuRails.stringyfied_resources.first
-      end
-      #SabisuRails.resources.map!(&:to_s)
+      SabisuRails.default_resource = SabisuRails.resources_names.first
       SabisuRails.app_name = Rails.application.class.parent_name
     end
 

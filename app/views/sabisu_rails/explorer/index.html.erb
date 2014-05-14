@@ -33,12 +33,9 @@
           </div>
           <br />
 
-          <fieldset>
-            <legend><%= @explorer.resource_class %> attributes</legend>
-            <% @explorer.resource_attributes.each do |attribute| %>
-              <%= f.input attribute, input_html: {name: "#{@explorer.resource_name}[#{attribute}]" } %>
+            <% @explorer.resource_columns.each do |column| %>
+              <%= f.input column, input_html: {name: "#{@explorer.resource_name}[#{column}]" }, as: @explorer.column_type(column), required: @explorer.required_attribute?(column) %>
           <% end %>
-          </fieldset>
           
           <fieldset>
             <legend>Url params (<span class="label round" id="url_params_counter_js">0</span>)</legend>

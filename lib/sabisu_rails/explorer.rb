@@ -2,6 +2,7 @@ module SabisuRails
   class Explorer
 
     include SabisuRails::Helpers::Required
+    include SabisuRails::Helpers::Type
 
     attr_reader :resource, :uri_pattern, :http_method
 
@@ -21,15 +22,24 @@ module SabisuRails
     end
 
     def resource_columns
-      resource_class.columns
+      resource_custom_columns.reject { |column| SabisuRails.ignored_attributes.include? column }
     end
     
-    def resource_attributes
-      resource_columns.map(&:name) - SabisuRails.ignored_attributes
-    end
-
     def method_missing(meth, *args, &block)
       resource_class.new.send(meth, *args, &block)
     end
+
+    private
+
+      def resource_custom_columns
+        columns = nil
+        SabisuRails.resources.each do |resource|
+          if resource.is_a?(Hash) && resource[@resource.to_sym].present?
+            columns = resource[@resource.to_sym].map(&:to_s)           
+          end
+        end
+        columns || resource_class.columns.map(&:name)
+      end
+
   end
 end

@@ -77,14 +77,24 @@ fieldset {
 
 .navigation {
   &.inline {
+    border-top: 1px solid #CCC;
+    padding: 0;
     li {
+        border-right: 1px solid #CCC;
+        padding: 6px 10px;
+        border-bottom: 1px solid #CCC;
+
+      &:first-child {
+        border-left: 1px solid #CCC;
+      }
       a {
-        padding: 2px 5px;
-        font-weight: lighter;
+        padding: 6px 10px;
+        font-weight: bold;
+        font-size: px-to-rems(14);
       }
 
       &.active {
-        border-top: 2px solid darken($navigation-inline-active-background, 10%);
+        border-bottom: 1px solid #FFF;
       }
     }
   }
@@ -93,10 +103,24 @@ fieldset {
 .response-details {
   float: right;
   padding-right: 25px;
+  .navigation {
+    &.inline {
+      li {
+        border-right: none;
+        border-bottom: none;
+        color: #777;
+
+        &:first-child {
+          border-left: none;
+        }
+      }
+    }
+  }
 }
 
 .response-wrapper {
   padding-right: 10px;
+  margin-top: 20px;
 }
 
 .text-strong {

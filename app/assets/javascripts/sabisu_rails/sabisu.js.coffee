@@ -37,4 +37,13 @@ $ ->
   $('#explorer_form').submit ->
     Pace.start()
 
-    
+  $('.appeareable').hide()
+
+  $('#explorer_http_method').change ->
+    $('#explorer_uri_pattern').val('')
+    if $(@).val() is "GET" or $(@).val() is "DELETE"
+      $('.appeareable').hide()
+      $('.hideaway').show()
+    else
+      $('.appeareable').show()
+      $('.hideaway').hide()

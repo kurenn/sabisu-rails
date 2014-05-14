@@ -27,6 +27,7 @@ gem 'sabisu_rails'
 gem 'compass-rails'
 gem 'furatto'
 gem 'font-awesome-rails'
+gem 'simple_form'
 ```
 And then execute:
 
@@ -37,6 +38,7 @@ $ bundle install
 After you install Sabisu you need to run the generator:
 
 ```console
+rails g simple_form:install
 rails g sabisu_rails:install
 ```
 
@@ -68,10 +70,17 @@ SabisuRails.setup do |config|
   config.api_headers = {'Accept' => 'application/vnd.sabisu.v1'}
   
   # Resources on the api
+  # You can customize the resources attributes for setting them on the form for posting to the server like so:
+  #
+  # config.resources = [{:products => [:title, :price]}, :users]
+  #
+  # In case you don't specify the attributes, Sabisu will pick them all.
+  #
   config.resources = [:products, :users]
 
 end
 ```
+
 We invite you to look at the full file for further customization.
 
 ## Bug tracker & feature request
@@ -105,7 +114,7 @@ Keep track of new feautres, development issues and community news.
 
 ## A live example
 
-We have deployed an example application on Heroku for you to give it a spin, visit `http://sabisu.herokuapp.com/sabisu_rails/explorer` and because is a demo the api only has GET endpoints.
+We have deployed an example application on Heroku for you to give it a spin, visit [http://sabisu.herokuapp.com/sabisu_rails/explorer](http://sabisu.herokuapp.com/sabisu_rails/explorer) and because is a demo the api only has GET endpoints.
 
 The authentication credentials are:
 
@@ -120,12 +129,13 @@ The file configuration for Heroku turns out to be more complex, check it out:
 SabisuRails.setup do |config|
 
   config.base_api_uri = ENV['API_URL']
-  config.resources = ["products", "users"]
+  config.resources = [:products,:users]
   config.default_resource = "users"
 
 end
 ```
 
+We are working to provide a full working example and wiki documentation for further implementation.
 
 ## Copyright and license
 

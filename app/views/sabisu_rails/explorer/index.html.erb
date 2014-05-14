@@ -10,16 +10,14 @@
   <div class="col-10 nopadding">
     <div class="main-content">
       <div class="row">
-        <div class="col-2">
-          <h4 class="text-muted"><%= "/#{@explorer.resource}/" %></h4>
-        </div>
-        <div class="col-10">
-
           <%= simple_form_for :explorer, url: explorer_path, html: {id: 'explorer_form'}, method: :get, remote: true do |f| %>
             <%= f.hidden_field :resource, value: @explorer.resource %>
           <div class="row">
             <div class="col-6">
-              <%= f.text_field :uri_pattern, value: @explorer.uri_pattern, placeholder: "URI pattern. 1 or bids or orders/1" %>
+              <div class="input-addon">
+                <a class="addon"><%= "/#{@explorer.resource}/" %></a>
+                <%= f.text_field :uri_pattern, value: @explorer.uri_pattern, placeholder: "URI pattern. 1 or bids or orders/1", class: "addon-field" %>
+              </div>
             </div>
             <div class="col-2">
               <%= f.select :http_method, options_for_select(SabisuRails.http_methods, @explorer.http_method.upcase) %>
@@ -33,26 +31,35 @@
           </div>
           <br />
 
+          <div class="appeareable">
             <% @explorer.resource_columns.each do |column| %>
               <%= f.input column, input_html: {name: "#{@explorer.resource_name}[#{column}]" }, as: @explorer.column_type(column), required: @explorer.required_attribute?(column) %>
           <% end %>
-          
-          <fieldset>
-            <legend>Url params (<span class="label round" id="url_params_counter_js">0</span>)</legend>
-            <div class="row" id="url_params_inputs">
+          </div>
 
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Headers (<span class="label round" id="headers_counter_js">0</span>)</legend>
-            <div class="row" id="header_inputs">
+          <div class="row">
+             <div class="col-5">
+              <fieldset>
+                <legend>Url params (<span class="label round" id="url_params_counter_js">0</span>)</legend>
+                <div class="row" id="url_params_inputs">
 
-            </div>
-          </fieldset>
+                </div>
+              </fieldset>
+             </div>
+             <div class="col-1">
+               
+             </div>
+             <div class="col-5">
+              <fieldset>
+                <legend>Headers (<span class="label round" id="headers_counter_js">0</span>)</legend>
+                <div class="row" id="header_inputs">
 
-          <%= f.submit "Send", class: 'button large radius three-d success', data: { :disable_with => "Processing..." } %>
+                </div>
+              </fieldset>
+             </div>
+          </div>
+          <%= f.submit "Send", class: 'button radius three-d success', data: { :disable_with => "Processing..." } %>
         <% end %>
-        </div>
       </div>
 
       <div class="response-wrapper">

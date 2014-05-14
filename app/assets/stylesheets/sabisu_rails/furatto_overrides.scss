@@ -7,8 +7,14 @@ $navigation-list-link-padding: 12px 0;
 $navigation-link-color: #333;
 $navigation-list-item-font-size: 1rem;
 
-$navigation-inline-active-background: #B2789C;
-$navigation-inline-active-padding: 2px 10px;
+$navigation-inline-active-background: #FFF;
+$navigation-inline-active-padding: 6px 10px;
+$navigation-inline-margin-bottom: 15px;
+
+$navigation-inline-active-color: #222;
+$navigation-inline-link-color: rgba(#777, 0.3);
+$navigation-inline-link-hover: #08C;
+$navigation-inline-list-item-margin-left: 0;
 
 // Base overrides
 $body-background-color: #F5F5F5;

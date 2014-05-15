@@ -64,6 +64,13 @@ module SabisuRails
   @@basic_auth_password = nil
 
 
+  # Sets the digest_auth header credentials
+  mattr_accessor :digest_auth_username
+  @@digest_auth_username = nil
+
+  mattr_accessor :digest_auth_password
+  @@digest_auth_password = nil
+
   mattr_accessor :default_resource
 
   @@configured = false
@@ -78,6 +85,10 @@ module SabisuRails
 
   def self.basic_auth_header?
     @@basic_auth_username.present? && @@basic_auth_password.present?
+  end
+
+  def self.digest_auth_header?
+    @@digest_auth_username.present? && @@digest_auth_password.present?
   end
 
   #Method to configure sabisu

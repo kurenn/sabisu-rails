@@ -3,6 +3,7 @@ require 'httparty'
 module SabisuRails
   extend ActiveSupport::Autoload
 
+  autoload :Client
   autoload :Request
   autoload :RouteRecognizer
   autoload :Explorer
@@ -47,12 +48,21 @@ module SabisuRails
   mattr_accessor :authentication_password
   @@authentication_password = "sekret"
 
+  # Application name
   mattr_accessor :app_name
   @@app_name = 'Sabisu'
 
   # Sets the default format for requests to the api, :json, :xml
   mattr_accessor :api_format
   @@api_format = :json
+
+  # Sets basic_auth headers
+  mattr_accessor :basic_auth_username
+  @@basic_auth_username = nil
+
+  mattr_accessor :basic_auth_password
+  @@basic_auth_password = nil
+
 
   mattr_accessor :default_resource
 
@@ -64,6 +74,10 @@ module SabisuRails
 
   def self.resources_names
     @@resources_names ||= @@resources.map { |resource| resource.is_a?(Hash) ? resource.keys[0].to_s : resource.to_s }
+  end
+
+  def self.basic_auth_header?
+    @@basic_auth_username.present? && @@basic_auth_password.present?
   end
 
   #Method to configure sabisu

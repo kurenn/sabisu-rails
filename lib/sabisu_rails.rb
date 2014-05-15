@@ -50,6 +50,10 @@ module SabisuRails
   mattr_accessor :app_name
   @@app_name = 'Sabisu'
 
+  # Sets the default format for requests to the api, :json, :xml
+  mattr_accessor :api_format
+  @@api_format = :json
+
   mattr_accessor :default_resource
 
   @@configured = false

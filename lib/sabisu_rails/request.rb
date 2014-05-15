@@ -4,6 +4,9 @@ module SabisuRails
 
     base_uri SabisuRails.base_api_uri
     headers SabisuRails.api_headers
+    headers "Accept" => "application/#{SabisuRails.api_format}"
+    headers "Content-Type" => "application/#{SabisuRails.api_format}"
+    format SabisuRails.api_format
 
     def initialize(explorer, body_params, params)
       @explorer = explorer

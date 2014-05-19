@@ -12,6 +12,10 @@ SabisuRails.setup do |config|
   # config.http_methods = %w{ GET POST PUT DELETE PATCH }
   
   # Headers to include on each request
+  #
+  # You can configure the api headers fairly easy by just adding the correct headers
+  # config.api_headers = { "Accept" => "application/json,application/vnd.application.v1" }
+  #
   # config.api_headers = {}
 
   # Layout configuration

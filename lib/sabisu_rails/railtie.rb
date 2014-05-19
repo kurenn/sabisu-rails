@@ -4,7 +4,7 @@ module SabisuRails
   class Railtie < ::Rails::Railtie
     config.eager_load_namespaces << SabisuRails
 
-    ActiveSupport.on_load :active_record do
+    config.after_initialize do
       SabisuRails.default_resource = SabisuRails.resources_names.first
       SabisuRails.app_name = Rails.application.class.parent_name
     end

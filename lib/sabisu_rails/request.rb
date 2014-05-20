@@ -22,7 +22,7 @@ module SabisuRails
 
       body_params[@explorer.resource_name] = @body_params.reject { |k, v| v.blank? }
 
-      body_params 
+      body_params.to_json
     end
   end
 end

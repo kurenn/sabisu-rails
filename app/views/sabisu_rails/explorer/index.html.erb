@@ -3,7 +3,7 @@
     <ul class="navigation side">
       <li class="header"><%= SabisuRails.app_name %> - <br /> Api Explorer</li>
       <% @resources.each do |resource| %>
-        <li class="<%= active_resource_state(resource) %>"><%= link_to resource.capitalize, explorer_path(explorer: { resource: resource }) %></li>
+        <li class="<%= active_resource_state(resource) %>"><%= link_to resource.classify, explorer_path(explorer: { resource: resource }) %></li>
     <% end %>
     </ul>
   </div>

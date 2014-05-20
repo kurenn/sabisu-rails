@@ -14,7 +14,13 @@ module SabisuRails
     end
 
     def response 
-      self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", body: resource_body_params, headers: @headers, query: @url_params)
+        self.class.send(@explorer.http_method, "/#{@explorer.resource}/#{@explorer.uri_pattern}", request_options_hash)
+    end
+
+    def request_options_hash
+      options = { headers: @headers, query: @url_params }
+      options[:body] = resource_body_params if @explorer.require_body_params?
+      options
     end
 
     def resource_body_params

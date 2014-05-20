@@ -29,6 +29,18 @@ module SabisuRails
       resource_class.new.send(meth, *args, &block)
     end
 
+    def get?
+      @http_method == "get" 
+    end
+
+    def delete?
+      @http_method == "delete" 
+    end
+
+    def require_body_params?
+      !(get? || delete?)
+    end
+
     private
 
       def resource_custom_columns

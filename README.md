@@ -22,6 +22,18 @@ To get started, checkout:
 
 Install sabisu is extremely easy, just add some gems to your `Gemfile`
 
+For projects using Rails 4.2 or newer, configure the following:
+
+```ruby
+gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+gem 'compass-rails', '~> 2.0.2'
+gem 'furatto'
+gem 'font-awesome-rails'
+gem 'simple_form'
+```
+
+For projects using Rails installations older than 4.2, configure the following:
+
 ```ruby
 gem 'sabisu_rails'
 gem 'compass-rails'
@@ -29,6 +41,7 @@ gem 'furatto'
 gem 'font-awesome-rails'
 gem 'simple_form'
 ```
+
 And then execute:
 
 ```console

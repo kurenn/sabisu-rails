@@ -33,7 +33,7 @@ module SabisuRails
 
   # Layout
   mattr_accessor :layout
-  @@layout = "sabisu_rails"
+  @@layout = "sabisu"
 
   # Resources
   mattr_accessor :resources

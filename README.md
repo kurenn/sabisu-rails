@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/IcaliaLabs/sabisu-rails/badges/gpa.svg)](https://codeclimate.com/github/IcaliaLabs/sabisu-rails)
+[![Test Coverage](https://codeclimate.com/github/IcaliaLabs/sabisu-rails/badges/coverage.svg)](https://codeclimate.com/github/IcaliaLabs/sabisu-rails/coverage)
+[![Issue Count](https://codeclimate.com/github/IcaliaLabs/sabisu-rails/badges/issue_count.svg)](https://codeclimate.com/github/IcaliaLabs/sabisu-rails)
+
 # [Sabisu](https://github.com/IcaliaLabs/sabisu-rails)
 
 Sabisu is a powerful postman-like engine client to explore your Rails application api. It's still under heavy development, but it is quite impressive and beautiful. Give it a try!

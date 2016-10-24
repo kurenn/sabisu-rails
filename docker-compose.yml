@@ -1,0 +1,29 @@
+version: '2'
+
+volumes:
+  gems:
+    driver: local
+
+services:
+  test: &default
+    image: thelastinuit/ruby_capybara:1.0
+    command: bundle exec guard start --no-bundler-warning --no-interactions
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+      - gems:/usr/local/bundle
+    stdin_open: true
+    tty: true
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
+  app:
+    <<: *default
+    ports:
+      - 80:80
+    command: rails server -b 0.0.0.0 -p 80 -P /tmp/rails.pid
+    environment:
+      RAILS_ENV: development
+      RACK_ENV: development
+    env_file:
+      - dev.env
